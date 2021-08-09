@@ -3,8 +3,58 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = 'pass-generator';
+  letters = [
+    'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p',
+    'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F',
+    'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V',
+    'W', 'X', 'Y', 'Z'];
+  numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+  symbols = ['!', '#', '$', '%', '&', '(', ')', '*', '+'];
+  password = ""
+
+  generatePassword() {
+    this.password = ""
+    const nrLetters = this.getRandom(8, 10);
+    const nrSymbols = this.getRandom(2, 4);
+    const nrNumbers = this.getRandom(2, 4);
+
+    let passwordList = []
+    for (let i = 0; i < nrLetters; i++) {
+        passwordList.push(this.letters[Math.floor(Math.random() * this.letters.length)])
+    }
+    for (let i = 0; i < nrSymbols; i++) {
+      passwordList.push(this.symbols[Math.floor(Math.random() * this.symbols.length)])
+    }
+    for (let i = 0; i < nrNumbers; i++) {
+      passwordList.push(this.numbers[Math.floor(Math.random() * this.numbers.length)])
+    }
+    
+    const generatedPass =  this.shuffle(passwordList)
+
+    for (let i = 0; i < generatedPass.length; i++){
+      this.password += generatedPass[i]
+    }
+    console.log(generatedPass)
+    console.log(this.password)
+  }
+
+  getRandom(min: number, max: number) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1) + min);
+  }
+
+  shuffle(array: any[]) {
+    let currentIndex = array.length,  randomIndex
+    while (0 !== currentIndex) {
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;  
+      [array[currentIndex], array[randomIndex]] = [
+        array[randomIndex], array[currentIndex]];
+    }  
+    return array;
+  }
 }
