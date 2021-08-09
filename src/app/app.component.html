@@ -1,8 +1,6 @@
-<div class="row">
-  <div class="col-xs-10">
-    <label>A Simple Password Generator</label>
-    <hr>
-    <button class="btn btn-success" (click)="generatePassword()">Generate</button>
-    <input type="text" value="{{ password }}">
-  </div>
+<div class="container">
+  <label><b>A Simple Password Generator</b></label>
+  <hr />
+  <input placeholder="Password" value="{{ password }}" />
+  <button (click)="generatePassword()">Generate</button>
 </div>
