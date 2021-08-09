@@ -7,13 +7,13 @@ input {
   padding: 12px 20px;
   margin: 8px 0;
   display: inline-block;
-  border: 1px solid #ccc;
+  border: 1px solid white;
   box-sizing: border-box;
   text-align: center;
 }
 
 button {
-  background-color: #04aa6d;
+  background-color: steelblue;
   color: white;
   padding: 14px 20px;
   margin: 8px 0;
@@ -27,10 +27,9 @@ button:hover {
 }
 
 .container {
-  text-align: center;
-  position: fixed;
-  width: 500px;
-  height: 500px;
-  top: 30%;
-  left: 40%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
 }
