@@ -2,18 +2,27 @@
   <h1><b>A Simple Password Generator</b></h1>
   <hr />
   <div>
-    <label>How many letters? : </label>
+    <label>Number of letters : </label>
     <input
       type="number"
       class="in"
       value="{{ nrLetters }}"
       (input)="getNrLetters($event)"
     /><br />
-    <label>How many numbers? :</label>
-    <input type="number" class="in" value="{{ nrNumbers }}"
-    (input)="getNrNumbers($event)"><br />
-    <label>How many symbols? :</label>
-    <input type="number" class="in" value="{{ nrSymbols }}" (input)="getNrSymbols($event)"/><br />
+    <label>Number of numbers : </label>
+    <input
+      type="number"
+      class="in"
+      value="{{ nrNumbers }}"
+      (input)="getNrNumbers($event)"
+    /><br />
+    <label>Number of symbols? : </label>
+    <input
+      type="number"
+      class="in"
+      value="{{ nrSymbols }}"
+      (input)="getNrSymbols($event)"
+    /><br />
     <input class="pass" placeholder="Password" value="{{ password }}" />
     <button (click)="generatePassword()">Generate</button>
   </div>
