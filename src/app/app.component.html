@@ -16,14 +16,15 @@
       value="{{ nrNumbers }}"
       (input)="getNrNumbers($event)"
     /><br />
-    <label>Number of symbols? : </label>
+    <label>Number of symbols : </label>
     <input
       type="number"
       class="in"
       value="{{ nrSymbols }}"
       (input)="getNrSymbols($event)"
-    /><br />
-    <input class="pass" placeholder="Password" value="{{ password }}" />
-    <button (click)="generatePassword()">Generate</button>
+    /><br /><br>
   </div>
+  <input class="pass" placeholder="Password" value="{{ password }}" />
+  <button class="copy" (click)="onCopy()"><b>Copy</b></button>
+  <button class="generate" (click)="generatePassword()">Generate</button>
 </div>
