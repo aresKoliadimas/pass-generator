@@ -1,3 +1,4 @@
+import { prepareEventListenerParameters } from '@angular/compiler/src/render3/view/template';
 import { Component } from '@angular/core';
 
 @Component({
@@ -14,21 +15,25 @@ export class AppComponent {
   numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
   symbols = ['!', '#', '$', '%', '&', '(', ')', '*', '+'];
   password = ""
+  nrLetters = 8
+  nrSymbols = 2
+  nrNumbers = 2
 
   generatePassword() {
+    console.log(this.getNrLetters)
     this.password = ""
-    const nrLetters = this.getRandom(8, 10);
-    const nrSymbols = this.getRandom(2, 4);
-    const nrNumbers = this.getRandom(2, 4);
+    // const nrLetters = this.getRandom(8, 10);
+    // const nrSymbols = this.getRandom(2, 4);
+    // const nrNumbers = this.getRandom(2, 4);
 
     let passwordList = []
-    for (let i = 0; i < nrLetters; i++) {
+    for (let i = 0; i < this.nrLetters; i++) {
         passwordList.push(this.letters[Math.floor(Math.random() * this.letters.length)])
     }
-    for (let i = 0; i < nrSymbols; i++) {
+    for (let i = 0; i < this.nrSymbols; i++) {
       passwordList.push(this.symbols[Math.floor(Math.random() * this.symbols.length)])
     }
-    for (let i = 0; i < nrNumbers; i++) {
+    for (let i = 0; i < this.nrNumbers; i++) {
       passwordList.push(this.numbers[Math.floor(Math.random() * this.numbers.length)])
     }
     
@@ -37,8 +42,6 @@ export class AppComponent {
     for (let i = 0; i < generatedPass.length; i++){
       this.password += generatedPass[i]
     }
-    console.log(generatedPass)
-    console.log(this.password)
   }
 
   getRandom(min: number, max: number) {
@@ -56,5 +59,17 @@ export class AppComponent {
         array[randomIndex], array[currentIndex]];
     }  
     return array;
+  }
+
+  getNrLetters(event: Event){
+    this.nrLetters = +(<HTMLInputElement>event.target).value
+  }
+
+  getNrSymbols(event: Event){
+    this.nrSymbols = +(<HTMLInputElement>event.target).value
+  }
+
+  getNrNumbers(event: Event){
+    this.nrNumbers = +(<HTMLInputElement>event.target).value
   }
 }
