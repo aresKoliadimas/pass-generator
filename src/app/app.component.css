@@ -1,4 +1,4 @@
-label {
+h1 {
   color: white;
 }
 
@@ -9,6 +9,7 @@ input {
   display: inline-block;
   border: 1px solid #ccc;
   box-sizing: border-box;
+  text-align: center;
 }
 
 button {
@@ -26,5 +27,10 @@ button:hover {
 }
 
 .container {
-  padding: 16px;
+  text-align: center;
+  position: fixed;
+  width: 500px;
+  height: 500px;
+  top: 30%;
+  left: 40%;
 }
