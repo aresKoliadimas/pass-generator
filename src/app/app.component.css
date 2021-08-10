@@ -3,8 +3,12 @@ label {
   color: white;
 }
 
-hr {
+.line1 {
   border: solid gray;
+}
+
+.line2 {
+  border: dashed gray;
 }
 
 .in {
