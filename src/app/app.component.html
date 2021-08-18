@@ -1,31 +1,46 @@
-<div class="container">
-  <h1>
-    <b>A <i>Simple</i> But <b>Strong</b> Password Generator</b>
-  </h1>
-  <hr class="line1" />
-  <div>
-    <label
-      >Number of letters : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label
+<div class="col-xs">
+  <div class="container">
+    <h2>
+      <b>A <i>Simple</i> But <b>Strong</b> Password Generator</b>
+    </h2>
+    <hr class="line1" />
+    <div>
+      <label
+        >Number of letters : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label
+      >
+      <input type="number" class="in" [value]="nrLetters" #lettersInput /><br />
+      <label>Number of numbers : &nbsp;&nbsp;&nbsp;</label>
+      <input type="number" class="in" [value]="nrNumbers" #numbersInput /><br />
+      <label>Number of symbols : &nbsp;&nbsp;&nbsp;&nbsp;</label>
+      <input type="number" class="in" [value]="nrSymbols" #symbolsInput />
+      <hr class="line2" />
+    </div>
+    <div class="input-group mb-3">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Password"
+        aria-label="Password"
+        aria-describedby="basic-addon2"
+        [value]="password"
+      />
+      <div class="input-group-append">
+        <button class="btn btn-success" type="button" (click)="onCopy()">
+          <b>Copy</b>
+        </button>
+      </div>
+    </div>
+    <button
+      class="btn btn-primary btn-lg btn-block"
+      (click)="
+        generatePassword(
+          lettersInput.value,
+          numbersInput.value,
+          symbolsInput.value
+        )
+      "
     >
-    <input type="number" class="in" [value]="nrLetters" #lettersInput /><br />
-    <label>Number of numbers : &nbsp;&nbsp;&nbsp;</label>
-    <input type="number" class="in" [value]="nrNumbers" #numbersInput /><br />
-    <label>Number of symbols : &nbsp;&nbsp;&nbsp;&nbsp;</label>
-    <input type="number" class="in" [value]="nrSymbols" #symbolsInput />
-    <hr class="line2" />
+      Generate
+    </button>
   </div>
-  <input class="pass" placeholder="Password" [value]="password" />
-  <button class="copy" (click)="onCopy()"><b>Copy</b></button>
-  <button
-    class="generate"
-    (click)="
-      generatePassword(
-        lettersInput.value,
-        numbersInput.value,
-        symbolsInput.value
-      )
-    "
-  >
-    Generate
-  </button>
 </div>
