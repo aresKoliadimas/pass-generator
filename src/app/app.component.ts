@@ -1,4 +1,3 @@
-import { prepareEventListenerParameters } from '@angular/compiler/src/render3/view/template';
 import { Component } from '@angular/core';
 
 @Component({
@@ -64,31 +63,36 @@ export class AppComponent {
   numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
   symbols = ['!', '#', '$', '%', '&', '(', ')', '*', '+'];
   password = '';
+  passwordList: string[] = [];
   nrLetters = 8;
   nrSymbols = 2;
   nrNumbers = 2;
 
-  generatePassword() {
+  generatePassword(
+    inputLetters: string,
+    inputNumbers: string,
+    inputSymbols: string
+  ) {
     this.password = '';
+    this.passwordList = [];
 
-    let passwordList = [];
-    for (let i = 0; i < this.nrLetters; i++) {
-      passwordList.push(
+    for (let i = 0; i < +inputLetters; i++) {
+      this.passwordList.push(
         this.letters[Math.floor(Math.random() * this.letters.length)]
       );
     }
-    for (let i = 0; i < this.nrSymbols; i++) {
-      passwordList.push(
+    for (let i = 0; i < +inputSymbols; i++) {
+      this.passwordList.push(
         this.symbols[Math.floor(Math.random() * this.symbols.length)]
       );
     }
-    for (let i = 0; i < this.nrNumbers; i++) {
-      passwordList.push(
+    for (let i = 0; i < +inputNumbers; i++) {
+      this.passwordList.push(
         this.numbers[Math.floor(Math.random() * this.numbers.length)]
       );
     }
 
-    const generatedPass = this.shuffle(passwordList);
+    const generatedPass = this.shuffle(this.passwordList);
 
     for (let i = 0; i < generatedPass.length; i++) {
       this.password += generatedPass[i];
@@ -109,18 +113,6 @@ export class AppComponent {
     return array;
   }
 
-  getNrLetters(event: Event) {
-    this.nrLetters = +(<HTMLInputElement>event.target).value;
-  }
-
-  getNrSymbols(event: Event) {
-    this.nrSymbols = +(<HTMLInputElement>event.target).value;
-  }
-
-  getNrNumbers(event: Event) {
-    this.nrNumbers = +(<HTMLInputElement>event.target).value;
-  }
-
   onCopy() {
     let dummy = document.createElement('textarea');
     document.body.appendChild(dummy);
@@ -130,6 +122,8 @@ export class AppComponent {
     document.body.removeChild(dummy);
     const holder = this.password;
     this.password = 'copied to clipboard!';
-    setTimeout(() => {this.password = holder;}, 1000);
+    setTimeout(() => {
+      this.password = holder;
+    }, 1000);
   }
 }

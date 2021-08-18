@@ -7,29 +7,25 @@
     <label
       >Number of letters : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label
     >
-    <input
-      type="number"
-      class="in"
-      value="{{ nrLetters }}"
-      (input)="getNrLetters($event)"
-    /><br />
+    <input type="number" class="in" [value]="nrLetters" #lettersInput /><br />
     <label>Number of numbers : &nbsp;&nbsp;&nbsp;</label>
-    <input
-      type="number"
-      class="in"
-      value="{{ nrNumbers }}"
-      (input)="getNrNumbers($event)"
-    /><br />
+    <input type="number" class="in" [value]="nrNumbers" #numbersInput /><br />
     <label>Number of symbols : &nbsp;&nbsp;&nbsp;&nbsp;</label>
-    <input
-      type="number"
-      class="in"
-      value="{{ nrSymbols }}"
-      (input)="getNrSymbols($event)"
-    />
+    <input type="number" class="in" [value]="nrSymbols" #symbolsInput />
     <hr class="line2" />
   </div>
-  <input class="pass" placeholder="Password" value="{{ password }}" />
+  <input class="pass" placeholder="Password" [value]="password" />
   <button class="copy" (click)="onCopy()"><b>Copy</b></button>
-  <button class="generate" (click)="generatePassword()">Generate</button>
+  <button
+    class="generate"
+    (click)="
+      generatePassword(
+        lettersInput.value,
+        numbersInput.value,
+        symbolsInput.value
+      )
+    "
+  >
+    Generate
+  </button>
 </div>
